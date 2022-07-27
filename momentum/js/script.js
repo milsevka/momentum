@@ -9,7 +9,7 @@ const nameMain = document.querySelector('.name');
 function showTime() {
 const date = new Date();
 time.innerHTML = date.toLocaleTimeString();
-setTimeout(showTime,showDate, 1000);
+setTimeout(showTime,showDate,showGreeting, 1000);
 }
 showTime()
 
@@ -26,11 +26,11 @@ showDate()
 function showGreeting() {
     const date = new Date();
     const hour = date.getHours()
-    if (hour <= 6) {
+    if (hour < 6) {
         greeting.innerHTML = 'Good night, ';
-      } else if (hour <= 12) {
+      } else if (hour < 12) {
         greeting.innerHTML = 'Good morning, ';
-      } else if (hour <= 18) {
+      } else if (hour < 18) {
         greeting.innerHTML = 'Good day, ';
       } else {
         greeting.innerHTML = 'Good evening, ';
