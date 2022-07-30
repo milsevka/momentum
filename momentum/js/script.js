@@ -8,6 +8,8 @@ const wind = document.querySelector('.wind');
 const humidity = document.querySelector('.humidity');
 const weatherDescription = document.querySelector('.weather-description');
 const city = document.querySelector('.city');
+const slidePrev = document.querySelector('.slide-prev');
+const slideNext = document.querySelector('.slide-next');
 
 
 // 1.Часы и календарь
@@ -15,7 +17,7 @@ const city = document.querySelector('.city');
 function showTime() {
 const date = new Date();
 time.innerHTML = date.toLocaleTimeString();
-setTimeout(showTime,showDate,showGreeting, 1000);
+setTimeout(showTime,showDate,getTimeOfDay, 1000);
 }
 showTime()
 
@@ -29,20 +31,25 @@ showDate()
 
 // 2. Приветствие
 
-function showGreeting() {
+function getTimeOfDay() {
     const date = new Date();
     const hour = date.getHours()
+    const arrayDays = ['morning', 'afternoon', 'evening', 'night'];
     if (hour < 12) {
-        greeting.innerHTML = 'Good morning, ';
+      greeting.textContent = `Good ${arrayDays[0]},`;
+      return arrayDays[0];
       } else if (hour < 17) {
-        greeting.innerHTML = 'Good afternoon, ';
+        greeting.textContent = `Good ${arrayDays[1]},`;
+        return arrayDays[1];
       } else if (hour < 20) {
-        greeting.innerHTML = 'Good evening, ';
+        greeting.textContent = `Good ${arrayDays[2]},`;
+        return arrayDays[2];
       } else {
-        greeting.innerHTML = 'Good night, ';
+        greeting.textContent = `Good ${arrayDays[3]},`; 
+        return arrayDays[3]
       }
     }
-showGreeting()
+getTimeOfDay()
 
 function setLocalStorage() {
     localStorage.setItem('nameMain', nameMain.value);
@@ -55,8 +62,31 @@ function getLocalStorage() {
     }
   }
 window.addEventListener('load', getLocalStorage)
-// 3. Слайдер
 
+// Слайдер
+function getRandomNum(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function setBg(){
+const timeOfDay = getTimeOfDay();
+const randomBgNum = getRandomNum(1, 20);
+const bgNum = randomBgNum.toString().padStart(2, "0");
+const img = new Image();
+img.src = `https://raw.githubusercontent.com/milsevka/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
+img.onload = () => {
+  document.body.style.backgroundImage = `url(${img.src})`
+}
+}
+setBg()
+
+// function getSlidePrev ()
+// function getSlideNext ()
+
+// slideNext.addEventListener('click', getSlideNext);
+// slidePrev.addEventListener('click', getSlidePrev);
 
 // 4. Погода
 
@@ -73,7 +103,7 @@ async function getWeather() {
   weatherIcon.classList.add(`owf-${dataW.weather[0].id}`);
   temperature.textContent = `${Math.ceil(dataW.main.temp)}°C`;
   weatherDescription.textContent = dataW.weather[0].description;
-  wind.textContent = `Wind speed: ${dataW.wind.speed} m/s`;
+  wind.textContent = `Wind speed: ${Math.ceil(dataW.wind.speed)} m/s`;
   humidity.textContent = `Humidity: ${dataW.main.humidity} %`;
 }
 
