@@ -82,11 +82,27 @@ img.onload = () => {
 }
 setBg()
 
-// function getSlidePrev ()
-// function getSlideNext ()
+let randomNum = getRandomNum(1, 20)
 
-// slideNext.addEventListener('click', getSlideNext);
-// slidePrev.addEventListener('click', getSlidePrev);
+function getSlidePrev () {
+if (randomNum === 1) {
+  randomNum = 20
+} else {
+  randomNum = randomNum - 1
+}
+setBg()
+}
+function getSlideNext () {
+  if (randomNum === 20) {
+    randomNum = 1
+  } else {
+    randomNum = randomNum + 1
+  }
+  setBg()
+}
+
+slideNext.addEventListener('click', getSlideNext);
+slidePrev.addEventListener('click', getSlidePrev);
 
 // 4. Погода
 
