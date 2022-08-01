@@ -12,7 +12,7 @@ const slidePrev = document.querySelector('.slide-prev');
 const slideNext = document.querySelector('.slide-next');
 const quotez = document.querySelector('.quote');
 const authorz = document.querySelector('.author');
-
+const changeQuote = document.querySelector('.change-quote');
 
 // 1.Часы и календарь
 
@@ -37,13 +37,13 @@ function getTimeOfDay() {
     const date = new Date();
     const hour = date.getHours()
     const arrayDays = ['morning', 'afternoon', 'evening', 'night'];
-    if (hour < 12) {
+    if (hour < 12 && hour > 6)  {
       greeting.textContent = `Good ${arrayDays[0]},`;
       return arrayDays[0];
-      } else if (hour < 17) {
+      } else if (hour < 18) {
         greeting.textContent = `Good ${arrayDays[1]},`;
         return arrayDays[1];
-      } else if (hour < 20) {
+      } else if (hour < 24) {
         greeting.textContent = `Good ${arrayDays[2]},`;
         return arrayDays[2];
       } else {
@@ -152,8 +152,10 @@ async function getQuotes() {
   const quotes = 'quotes.json';
   const res = await fetch(quotes);
   const data = await res.json(); 
-  let randomNumQuote = getRandomNum(0, Object.keys(data).length);
-  authorz.textContent = data[randomNumQuote].author;
- // quotez.textContent = data[randomNumQuote].quote
+  let randomNumQuote = getRandomNum(0, Object.keys(data.quotes).length);
+  authorz.textContent = data.quotes[randomNumQuote].author;
+  quotez.textContent = data.quotes[randomNumQuote].quote
 }
 getQuotes();
+
+changeQuote.addEventListener('click', getQuotes);
