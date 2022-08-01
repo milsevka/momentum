@@ -10,6 +10,8 @@ const weatherDescription = document.querySelector('.weather-description');
 const city = document.querySelector('.city');
 const slidePrev = document.querySelector('.slide-prev');
 const slideNext = document.querySelector('.slide-next');
+const quotez = document.querySelector('.quote');
+const authorz = document.querySelector('.author');
 
 
 // 1.Часы и календарь
@@ -146,3 +148,12 @@ window.addEventListener('load', getLocalStorageWeather)
 city.addEventListener('keydown', setCity);
 
 // 5. Виджет "цитата дня"
+async function getQuotes() {  
+  const quotes = 'quotes.json';
+  const res = await fetch(quotes);
+  const data = await res.json(); 
+  let randomNumQuote = getRandomNum(0, Object.keys(data).length);
+  authorz.textContent = data[randomNumQuote].author;
+ // quotez.textContent = data[randomNumQuote].quote
+}
+getQuotes();
