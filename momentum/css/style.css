@@ -264,6 +264,7 @@ body {
   min-height: 20px;
 }
 
+
 @media (max-width: 768px) {
   .time {
     min-height: 80px;
