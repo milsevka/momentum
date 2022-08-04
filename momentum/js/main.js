@@ -5,5 +5,3 @@ import getWeather from './weather.js'
 import {setBg} from './slider.js'
 import getQuotes from './quotes.js'
 import playAudio from './play.js'
-
-
