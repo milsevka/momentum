@@ -1,10 +1,10 @@
-import getTimeOfDay from "./greeting";
+import getTimeOfDay from "./greeting.js";
 
 const slidePrev = document.querySelector('.slide-prev');
 const slideNext = document.querySelector('.slide-next');
 let randomNum = getRandomNum(1, 20)
 
-export default function setBg(){
+export  function setBg(){
 const timeOfDay = getTimeOfDay('./greeting.js');
 const randomBgNum = getRandomNum(1, 20);
 const bgNum = randomBgNum.toString().padStart(2, "0");
@@ -34,7 +34,7 @@ function getSlideNext () {
       setBg()
     }
    
-function getRandomNum(min, max) {
+export function getRandomNum(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;

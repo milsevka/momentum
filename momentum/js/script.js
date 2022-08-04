@@ -6,13 +6,11 @@
 // const weatherDescription = document.querySelector('.weather-description');
 // const city = document.querySelector('.city');
 
-const quotez = document.querySelector('.quote');
-const authorz = document.querySelector('.author');
-const changeQuote = document.querySelector('.change-quote');
-const buttonPlay = document.querySelector('.play');
-const playPrev = document.querySelector('.play-prew');
-const playNext = document.querySelector('.play-next');
-const player = document.querySelector('.player');
+
+// const buttonPlay = document.querySelector('.play');
+// const playPrev = document.querySelector('.play-prew');
+// const playNext = document.querySelector('.play-next');
+// const player = document.querySelector('.player');
 
 
 
@@ -153,17 +151,17 @@ const player = document.querySelector('.player');
 // city.addEventListener('keydown', setCity);
 
 // 5. Виджет "цитата дня"
-async function getQuotes() {  
-  const quotes = 'quotes.json';
-  const res = await fetch(quotes);
-  const data = await res.json(); 
-  let randomNumQuote = getRandomNum(0, Object.keys(data.quotes).length-1); 
-  authorz.textContent = data.quotes[randomNumQuote].author;
-  quotez.textContent = data.quotes[randomNumQuote].quote
-}
-getQuotes();
+// async function getQuotes() {  
+//   const quotes = 'quotes.json';
+//   const res = await fetch(quotes);
+//   const data = await res.json(); 
+//   let randomNumQuote = getRandomNum(0, Object.keys(data.quotes).length-1); 
+//   authorz.textContent = data.quotes[randomNumQuote].author;
+//   quotez.textContent = data.quotes[randomNumQuote].quote
+// }
+// getQuotes();
 
-changeQuote.addEventListener('click', getQuotes);
+// changeQuote.addEventListener('click', getQuotes);
 
 // 6. Плейлист
  
