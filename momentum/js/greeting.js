@@ -35,3 +35,8 @@ function getLocalStorage() {
       nameMain.value = localStorage.getItem('nameMain');
     }
   }
+
+  // let greetingTranslation {
+  //   en:
+  //   be:
+  // }

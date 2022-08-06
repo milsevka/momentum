@@ -1,21 +1,31 @@
 import playList from "./playList.js";
+const audio = new Audio();
+const progress = document.querySelector(".progress");
+const progressCont = document.querySelector(".progress_container");
+const playNow = document.querySelector(".playNow");
+const timeBit = document.querySelector(".time_bit");
+const timeAll = document.querySelector(".time_all");
 
-export default function music() {
+export function music() {
   const buttonPlay = document.querySelector(".play");
   const playPrev = document.querySelector(".play-prev");
   const playNext = document.querySelector(".play-next");
   const player = document.querySelector(".player");
-  const audio = new Audio();
+  const playItem = document.querySelectorAll(".play-item");
+
+  
   let playNum = 0;
   player.classList.add("meow");
   buttonPlay.addEventListener("click", toggleBtn);
   playNext.addEventListener("click", plNext);
   playPrev.addEventListener("click", plPrev);
-
+  audio.addEventListener('ended', plNext)
   function updateCurrentSong() {
+    playItem[playNum].classList.toggle("item-active");
     audio.src = playList[playNum].src;
     audio.currentTime = 0;
     audio.play()
+    playNow.textContent = `${playList[playNum].title}`
   }
   function pauseAudio() {
     audio.pause();
@@ -38,6 +48,7 @@ export default function music() {
     }
     playAudio();
     buttonPlay.classList.add("pause");
+    playItem[playNum+1].classList.remove("item-active");
   }
 
   function plNext() {
@@ -47,6 +58,7 @@ export default function music() {
     }
     playAudio();
     buttonPlay.classList.add("pause");
+    playItem[playNum-1].classList.remove("item-active");
   }
 
   buttonPlay.addEventListener("click", () => {
@@ -56,6 +68,25 @@ export default function music() {
     } else {
       pauseAudio();
     }
+   
   });
 }
 music();
+
+export function updateProgress (e) {
+const {duration, currentTime} = e.srcElement;
+const progressPercent = (currentTime / duration) * 100
+progress.style.width = `${progressPercent}%`
+}
+audio.addEventListener('timeupdate', updateProgress)
+
+export function clickProgress (e) {
+  const widthCont = this.clientWidth;
+  const clickX = e.offsetX;
+  const duration = audio.duration
+  audio.currentTime = (clickX / widthCont ) * duration
+}
+progressCont.addEventListener('click', clickProgress)
+
+// timeBit.textContent = `${audio.currentTime}`
+// timeAll.textContent = `${duration}`

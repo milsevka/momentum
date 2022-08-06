@@ -29,7 +29,7 @@ export default async function getWeather() {
     humidity.textContent = `Humidity: ${dataW.main.humidity} %`;
   } catch (error) {
     city.value = "Minsk";
-    alert("Неваерный город");
+    alert("Неверный город");
     getWeather();
   }
 }

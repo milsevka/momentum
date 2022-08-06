@@ -4,4 +4,7 @@ import getTimeOfDay from './greeting.js'
 import getWeather from './weather.js'
 import {setBg} from './slider.js'
 import getQuotes from './quotes.js'
-import music from './play.js'
+import {music} from './play.js'
+import {updateProgress} from './play.js'
+import {clickProgress} from './play.js'
+
