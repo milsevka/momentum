@@ -10,7 +10,6 @@ city.addEventListener("keydown", setCity);
 getLocalStorageWeather();
 
 export default async function getWeather() {
-  console.log("request");
 
   let url;
   if (!city.value) {
