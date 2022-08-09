@@ -15,14 +15,22 @@
         <button class="play-prev player-icon"></button>
         <button class="play player-icon"></button>
         <button class="play-next player-icon"></button>
+        <div class="volume_container">
+          <div class="volumeAll">
+            <input type="range" class="volume" min=0 max=100> 
+            <img src="/assets/img/icons8-volume-64 (1).png" class="volumeImg">
+          </div>
+        </div>
       </div>
+     
       <div class="playNow"></div>
       <div class="progress_container">
         <div class="progress"></div>
-        <div class="timePlay">
-          <div class="time_bit"></div>
-          <div class="time_all"></div>
-        </div>
+      </div>
+      <div class="time_play">
+        <div class="currentPlay">0:00</div>
+        <div class="divider">/</div>
+        <div class="lengthPlay"></div>
       </div>
       <ul class="play-list">
         <li class="play-item">Aqua Caelestis</li>
@@ -31,6 +39,7 @@
         <li class="play-item">Summer Wind</li>
       </ul>
     </div>
+  </audio>
     <div class="weather">
       <input type="text" class="city" />
       <i class="weather-icon owf"></i>
