@@ -15,20 +15,21 @@
         <button class="play-prev player-icon"></button>
         <button class="play player-icon"></button>
         <button class="play-next player-icon"></button>
-        <div class="volume_container">
-          <div class="volumeAll">
-            <input type="range" class="volume" min=0 max=100> 
-            <img src="/assets/img/icons8-volume-64 (1).png" class="volumeImg">
-          </div>
-        </div>
       </div>
-     
+      <div class="volume_container">
+        <div class="volumeAll">
+          <img src="/assets/img/volumeon.png" class="volumeImg">
+          <img src="/assets/img/volumeoff.png" class="volumeImgOff">
+        </div>
+        <input type="range" class="volume" min=0 max=100> 
+      </div>
+      
       <div class="playNow"></div>
-      <div class="progress_container">
+      <div class="progress_container passive">
         <div class="progress"></div>
       </div>
-      <div class="time_play">
-        <div class="currentPlay">0:00</div>
+      <div class="time_play passive">
+        <div class="currentPlay"></div>
         <div class="divider">/</div>
         <div class="lengthPlay"></div>
       </div>

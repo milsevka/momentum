@@ -35,7 +35,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 160px;
+  width: 150px;
   margin-bottom: 18px;
 }
 
@@ -288,19 +288,33 @@ border-radius: 5px;
   flex-wrap: nowrap;
 }
 .volumeImg {
-  width: 34px;
-  height: 35px;
+  width: 30px;
+  height: 32px;
+  cursor: pointer;
+}
+.volumeImgOff {
+  display: none;
+  width: 30px;
+  height: 32px;
   cursor: pointer;
 }
 .time_play {
   display: flex;
-    padding: 2px;
+  padding: 2px;
+
+  }
+  .volume_container {
+    display: flex;
+    flex-wrap: nowrap;
   }
 .volume {
   display: none;
 }
 .active {
   display: inline;
+}
+.passive {
+  display: none;
 }
 /* .time_all {
   width: 20px;

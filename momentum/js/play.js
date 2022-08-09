@@ -3,15 +3,17 @@ const audio = new Audio();
 const progress = document.querySelector(".progress");
 const progressCont = document.querySelector(".progress_container");
 const playNow = document.querySelector(".playNow");
-// const timeBit = document.querySelector(".currentPlay");
+const timePlay = document.querySelector(".time_play");
+const timeBit = document.querySelector(".currentPlay");
 const timeAll = document.querySelector(".lengthPlay");
 const volumeImg = document.querySelector(".volumeImg");
+const volumeImgOff = document.querySelector(".volumeImgOff");
 const volume = document.querySelector(".volume");
-
+const buttonPlay = document.querySelector(".play");
 
 
 export function music() {
-  const buttonPlay = document.querySelector(".play");
+  
   const playPrev = document.querySelector(".play-prev");
   const playNext = document.querySelector(".play-next");
   const player = document.querySelector(".player");
@@ -23,23 +25,26 @@ export function music() {
   playNext.addEventListener("click", plNext);
   playPrev.addEventListener("click", plPrev);
   audio.addEventListener('ended', plNext)
-//  player.addEventListener("timeupdate", videoProgress)
+  // playItem[playNum].classList.add("item-active");
   function updateCurrentSong() {
-    playItem[playNum].classList.toggle("item-active");
     audio.src = playList[playNum].src;
     audio.currentTime = 0;
     audio.play()
     playNow.textContent = `${playList[playNum].title}`
     timeAll.textContent = `${playList[playNum].duration}`
+    // playItem[playNum].classList.add("item-active");
   }
+  
   function pauseAudio() {
     audio.pause();
     player.classList.add("meow");
+    playItem[playNum].classList.remove("item-active");
   }
   function playAudio() {
     updateCurrentSong();
     audio.play();
     player.classList.remove("meow");
+    playItem[playNum].classList.add("item-active");
   }
 
   function toggleBtn() {
@@ -53,7 +58,7 @@ export function music() {
     }
     playAudio();
     buttonPlay.classList.add("pause");
-    playItem[playNum+1].classList.remove("item-active");
+    // playItem[playNum+1].classList.remove("item-active");
   }
 
   function plNext() {
@@ -63,35 +68,39 @@ export function music() {
     }
     playAudio();
     buttonPlay.classList.add("pause");
-    playItem[playNum-1].classList.remove("item-active");
+    // playItem[playNum-1].classList.remove("item-active");
   }
 
   buttonPlay.addEventListener("click", () => {
+    progressCont.classList.toggle("passive");
+    timePlay.classList.toggle("passive");
     const isPlay = player.classList.contains("meow");
     if (isPlay) {
       playAudio();
     } else {
       pauseAudio();
     }
-    
   });
-  volumeImg.addEventListener("click", () => {
+  volumeImg.addEventListener("mouseover", () => {
   volume.classList.toggle("active");
   })
-  volumeImg.addEventListener("mousedown", () => {
+  volumeImg.addEventListener("click", () => {
+    volumeImgOff.classList.add("active");
+    volumeImg.classList.add("passive");
     audio.volume = 0;
     })
+  volumeImgOff.addEventListener("click", () => {
+      volumeImgOff.classList.remove("active");
+      volumeImg.classList.remove("passive");
+      audio.volume = 0.5;
+      })
 
   function audioValue() {
     let v = this.value;
     audio.volume = v /100;
   }
   document.querySelector('.volume').oninput = audioValue;
-  // function videoProgress() { //Отображаем время воспроизведения
-  //   progress = (Math.floor(player.currentTime) / (Math.floor(player.duration) / 100));
-  //   progressBar.value = progress;
-  //   timeBit.innerHTML = videoTime(player.currentTime);
-  //   }
+
  
 }
 music();
@@ -110,16 +119,16 @@ export function updateProgress (e) {
   }
   progressCont.addEventListener('click', clickProgress)
 
-//  function getTimeCodeFromNum(num) {
-//     let seconds = parseInt(num);
-//     let minutes = parseInt(seconds / 60);
-//     seconds -= minutes * 60;
-//     const hours = parseInt(minutes / 60);
-//     minutes -= hours * 60;
-  
-//     if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
-//     return `${String(hours).padStart(2, 0)}:${minutes}:${String(
-//       seconds % 60
-//     ).padStart(2, 0)}`;
-//   }
- 
+  export function setUpdate() {
+    if (!isNaN(audio.duration)) {
+      let curMin = Math.floor(audio.currentTime / 60);
+      let curSec = Math.floor(audio.currentTime - curMin * 60);
+      if (curSec<10){curSec = "0" + curSec;}
+      if (curMin<10){curMin = "0" + curMin;}
+      timeBit.textContent = curMin + ":" + curSec;
+    }
+    setTimeout(setUpdate, 1000);
+  } 
+  buttonPlay.addEventListener('click', setUpdate)
+
+
