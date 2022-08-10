@@ -8,5 +8,5 @@ import {music} from './play.js'
 import {updateProgress} from './play.js'
 import {clickProgress} from './play.js'
 import {setUpdate} from './play.js'
-
+import settingMain from './setting.js'
 
