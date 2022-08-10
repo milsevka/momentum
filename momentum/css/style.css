@@ -316,6 +316,10 @@ border-radius: 5px;
 .passive {
   display: none;
 }
+.checkPassive {
+  visibility: hidden;
+  /* opacity: 0; */
+}
 /* .time_all {
   width: 20px;
   height: 20px;
