@@ -1,5 +1,5 @@
 import showTime from './time.js'
-import showDate from './data.js'
+import {showDate} from './data.js'
 import getTimeOfDay from './greeting.js'
 import getWeather from './weather.js'
 import {setBg} from './slider.js'
@@ -10,5 +10,6 @@ import {clickProgress} from './play.js'
 import {setUpdate} from './play.js'
 import {settingMain} from './setting.js'
 import {checkSetting} from './setting.js'
+import {checkTranslate} from './translate.js'
 
 

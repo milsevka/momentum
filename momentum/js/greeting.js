@@ -36,7 +36,4 @@ function getLocalStorage() {
     }
   }
 
-  // let greetingTranslation {
-  //   en:
-  //   be:
-  // }
+  
