@@ -24,3 +24,22 @@ export const greetingTranslation = {
         "be" : "Цытаты"
     },
 }
+
+// export const setTranslation = {
+//     "play_check": {
+//         "en" : "morning" ,
+//         "be" : "ранiцы"
+//     },
+//     "weather_check": {
+//         "en" : "afternoon" ,
+//         "be" : "дзень"
+//     },
+//     "greet_check": {
+//         "en" : "evening" ,
+//         "be" : "вечар"
+//     },
+//     "time_check": {
+//         "en" : "night" ,
+//         "be" : "Дабранач"
+//     }
+// }

@@ -9,6 +9,9 @@ import getWeather from './weather.js'
 import {showDate} from './data.js'
 import {translateDate} from './data.js'
 import {greetingTranslation} from './languages.js'
+import getTimeOfDay from './greeting.js'
+import getTimeOfDayBlr from './translateGreetings.js'
+
 const playCheckP = document.querySelector(".settingTitllePlay");
 const playCheckW = document.querySelector(".settingTitlleWeather");
 const playCheckG = document.querySelector(".settingTitlleGreeting");
@@ -22,6 +25,7 @@ export function checkTranslate () {
         quoteTranslate()
         weatherTranslate()
         translateDate()
+        getTimeOfDayBlr()
         playCheckP.innerHTML = greetingTranslation["play_check"]["be"]
         playCheckW.innerHTML = greetingTranslation["weather_check"]["be"]
         playCheckG.innerHTML = greetingTranslation["greet_check"]["be"]
@@ -32,6 +36,7 @@ export function checkTranslate () {
         getQuotes()
         getWeather()
         showDate()
+        getTimeOfDay()
         playCheckP.innerHTML = greetingTranslation["play_check"]["en"]
         playCheckW.innerHTML = greetingTranslation["weather_check"]["en"]
         playCheckG.innerHTML = greetingTranslation["greet_check"]["en"]
