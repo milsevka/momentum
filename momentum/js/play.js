@@ -45,6 +45,8 @@ export function music() {
     audio.play();
     player.classList.remove("meow");
     playItem[playNum].classList.add("item-active");
+    playItem[playNum-1].classList.remove("item-active");
+    playItem[playNum+1].classList.remove("item-active");
   }
 
   function toggleBtn() {

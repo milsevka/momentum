@@ -338,6 +338,7 @@ cursor: pointer;
   bottom: 45px;
   left: 0;
   position: absolute;
+  z-index: 2;
   /* transition: 0.5s all; */
   padding: 5px;
 }
