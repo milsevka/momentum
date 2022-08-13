@@ -25,28 +25,28 @@ export function music() {
   playNext.addEventListener("click", plNext);
   playPrev.addEventListener("click", plPrev);
   audio.addEventListener('ended', plNext)
-  // playItem[playNum].classList.add("item-active");
   function updateCurrentSong() {
     audio.src = playList[playNum].src;
     audio.currentTime = 0;
     audio.play()
     playNow.textContent = `${playList[playNum].title}`
     timeAll.textContent = `${playList[playNum].duration}`
-    // playItem[playNum].classList.add("item-active");
+    playItem[playNum].classList.add("item-active");
+    if (playItem[0].classList.contains("item-active")){
+      playItem[3].classList.remove("item-active")
+    }
   }
   
   function pauseAudio() {
     audio.pause();
     player.classList.add("meow");
-    playItem[playNum].classList.remove("item-active");
   }
   function playAudio() {
     updateCurrentSong();
     audio.play();
     player.classList.remove("meow");
-    playItem[playNum].classList.add("item-active");
-    playItem[playNum-1].classList.remove("item-active");
-    playItem[playNum+1].classList.remove("item-active");
+
+    playItem[playNum].classList.add("woof");
   }
 
   function toggleBtn() {
@@ -60,7 +60,10 @@ export function music() {
     }
     playAudio();
     buttonPlay.classList.add("pause");
-    // playItem[playNum+1].classList.remove("item-active");
+    playItem[playNum+1].classList.remove("item-active");
+    playItem[playNum-1].classList.remove("item-active");
+
+    
   }
 
   function plNext() {
@@ -70,7 +73,8 @@ export function music() {
     }
     playAudio();
     buttonPlay.classList.add("pause");
-    // playItem[playNum-1].classList.remove("item-active");
+    playItem[playNum-1].classList.remove("item-active");
+    
   }
 
   buttonPlay.addEventListener("click", () => {
@@ -103,7 +107,6 @@ export function music() {
   }
   document.querySelector('.volume').oninput = audioValue;
 
- 
 }
 music();
 export function updateProgress (e) {

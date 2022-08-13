@@ -25,7 +25,7 @@ export async function weatherTranslate() {
         wind.textContent = `Хуткасць паветра: ${Math.ceil(dataWW.wind.speed)} m/s`;
         humidity.textContent = `Вільготнасць: ${dataWW.main.humidity} %`;
       } catch (error) {
-        city.value = "Minsk";
+        city.value = "Мiнск";
         alert("Няверны горад");
         getWeather();
       }
@@ -34,7 +34,7 @@ export async function weatherTranslate() {
     if (localStorage.getItem("city")) {
       city.value = localStorage.getItem("city");
     } else {
-      city.value = "Minsk";
+      city.value = "Мiнск";
     }
   }
   
