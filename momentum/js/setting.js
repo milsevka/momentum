@@ -17,8 +17,8 @@ const weather = document.querySelector(".weather");
 export function settingMain () {
     settingCont.classList.toggle("hidden")
 }
-setBtn.addEventListener("click", settingMain)
 
+setBtn.addEventListener("click", settingMain)
 export function checkSetting () {
     if (!playCheck.checked) {
         player.classList.add("checkPassive")

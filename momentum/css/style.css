@@ -317,14 +317,11 @@ border-radius: 5px;
   display: none;
 }
 .checkPassive {
+  opacity: 0;
   visibility: hidden;
-  transition: all 0.5s ease;
-  /* opacity: 0; */
+  transition: .3s ease-in-out;
 }
-/* .time_all {
-  width: 20px;
-  height: 20px;
-} */
+
 .settingBtn {
 width: 35px;
 height: 35px;
@@ -340,13 +337,16 @@ cursor: pointer;
   left: 0;
   position: absolute;
   z-index: 2;
-  /* transition: 0.5s all; */
+  transition: .3s ease-in-out; 
+  opacity: 1;
+  /* transition: opacity 1s, visibility 0s; */
+  border-radius: 0 15px 15px 0;
   padding: 5px;
 }
 .hidden {
-    visibility: hidden;
-    top: -400px;
-    /* transition: 0.5s all; */
+   visibility: hidden;
+   opacity: 0;
+   /* transition: opacity 1s, visibility 0s 1s; */
   }
 
 .switch {

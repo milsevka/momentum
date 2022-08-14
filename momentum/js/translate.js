@@ -1,7 +1,7 @@
 const langChec = document.querySelector(".checkLangBtn");
 const quotez = document.querySelector('.quote');
 const authorz = document.querySelector('.author');
-
+const namePlace = document.querySelector('.name.placeholder');
 import {getRandomNum} from './slider.js';
 import getQuotes from './quotes.js';
 import {weatherTranslate} from './translateWeather.js';
@@ -32,6 +32,8 @@ export function checkTranslate () {
         playCheckT.innerHTML = greetingTranslation["time_check"]["be"]
         playCheckD.innerHTML = greetingTranslation["data_check"]["be"]
         playCheckQ.innerHTML = greetingTranslation["quotes_check"]["be"]
+        document.getElementById('input-name').placeholder='[Увядзіце імя]'
+        
      } else {
         getQuotes()
         getWeather()
@@ -43,6 +45,7 @@ export function checkTranslate () {
         playCheckT.innerHTML = greetingTranslation["time_check"]["en"]
         playCheckD.innerHTML = greetingTranslation["data_check"]["en"]
         playCheckQ.innerHTML = greetingTranslation["quotes_check"]["en"]
+        document.getElementById('input-name').placeholder='[Enter name]'
      }
 }
      
