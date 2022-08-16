@@ -7,10 +7,9 @@ const city = document.querySelector(".city");
 
 city.addEventListener("keydown", setCity);
 getWeather();
-getLocalStorageWeather()
+getLocalStorageWeather();
 
 export default async function getWeather() {
-
   let url;
   if (!city.value) {
     url = `https://api.openweathermap.org/data/2.5/weather?q=Minsk&lang=en&appid=13f3a0cc39cf73fb3e828a40d38dac5b&units=metric`;
@@ -48,4 +47,3 @@ function setCity(event) {
     localStorage.setItem("city", city.value);
   }
 }
-

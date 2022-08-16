@@ -492,6 +492,22 @@ input:checked + .slider:before {
 	color: #344755;
 	transform: translate3d(44px, 0, 0);
 }
+.footer_infoaboutme {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  position: absolute;
+  left: 40%;
+  bottom: 0;
+}
+.img_gh {
+  width: 34px;
+  height: 34px;
+}
+.img_rss {
+  width: 70px;
+  height: 50px;
+}
 
 @media (max-width: 768px) {
   .time {

@@ -5,45 +5,43 @@ const humidity = document.querySelector(".humidity");
 const weatherDescription = document.querySelector(".weather-description");
 const city = document.querySelector(".city");
 
-
-
-export async function weatherTranslate() { 
-    let urlW;
-    if (!city.value) {
-      urlW = `https://api.openweathermap.org/data/2.5/weather?q=Minsk&lang=be&appid=13f3a0cc39cf73fb3e828a40d38dac5b&units=metric`;
-    } else {
-      urlW = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=be&appid=13f3a0cc39cf73fb3e828a40d38dac5b&units=metric`;
-    }
-    try {
-        let resW = await fetch(urlW);
-        let dataWW = await resW.json();
-        weatherIcon.className = "weather-icon owf";
-        weatherIcon.classList.add(`owf-${dataWW.weather[0].id}`);
-        temperature.textContent = `${Math.ceil(dataWW.main.temp)}°C`;
-        weatherDescription.textContent = dataWW.weather[0].description;
-        wind.textContent = `Хуткасць паветра: ${Math.ceil(dataWW.wind.speed)} m/s`;
-        humidity.textContent = `Вільготнасць: ${dataWW.main.humidity} %`;
-      } catch (error) {
-        city.value = "Мінск";
-        alert("Няверны горад");
-        weatherTranslate();
-      }
-
-      city.addEventListener("keydown", setCityTr);
-getLocalStorageWeatherTr();
+export async function weatherTranslate() {
+  let urlW;
+  if (!city.value) {
+    urlW = `https://api.openweathermap.org/data/2.5/weather?q=Minsk&lang=be&appid=13f3a0cc39cf73fb3e828a40d38dac5b&units=metric`;
+  } else {
+    urlW = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=be&appid=13f3a0cc39cf73fb3e828a40d38dac5b&units=metric`;
   }
-  function getLocalStorageWeatherTr() {
-    if (localStorage.getItem("city")) {
-      city.value = localStorage.getItem("city");
-    } else {
-      city.value = "Мінск";
-    }
+  try {
+    let resW = await fetch(urlW);
+    let dataWW = await resW.json();
+    weatherIcon.className = "weather-icon owf";
+    weatherIcon.classList.add(`owf-${dataWW.weather[0].id}`);
+    temperature.textContent = `${Math.ceil(dataWW.main.temp)}°C`;
+    weatherDescription.textContent = dataWW.weather[0].description;
+    wind.textContent = `Хуткасць паветра: ${Math.ceil(dataWW.wind.speed)} m/s`;
+    humidity.textContent = `Вільготнасць: ${dataWW.main.humidity} %`;
+  } catch (error) {
+    city.value = "Minsk";
+    alert("Няверны горад");
+    weatherTranslate();
   }
-  
-  function setCityTr(event) {
-    if (event.code === "Enter") {
-        weatherTranslate();
-      localStorage.setItem("city", city.value);
-    }
+
+  city.addEventListener("keydown", setCityTr);
+  getLocalStorageWeatherTr();
+}
+function getLocalStorageWeatherTr() {
+  if (localStorage.getItem("city")) {
+    city.value = localStorage.getItem("city");
+  } else {
+    city.value = "Minsk";
   }
+}
+
+function setCityTr(event) {
+  if (event.code === "Enter") {
+    weatherTranslate();
+    localStorage.setItem("city", city.value);
+  }
+}
 
