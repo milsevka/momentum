@@ -6,8 +6,7 @@ let randomNum = getRandomNum(1, 20)
 
 export  function setBg(){
 const timeOfDay = getTimeOfDay('./greeting.js');
-const randomBgNum = getRandomNum(1, 20);
-const bgNum = randomBgNum.toString().padStart(2, "0");
+let bgNum = randomNum.toString().padStart(2, "0");
 const img = new Image();
 img.src = `https://raw.githubusercontent.com/milsevka/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
 img.onload = () => {

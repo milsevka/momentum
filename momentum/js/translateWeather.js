@@ -5,8 +5,7 @@ const humidity = document.querySelector(".humidity");
 const weatherDescription = document.querySelector(".weather-description");
 const city = document.querySelector(".city");
 
-city.addEventListener("keydown", setCity);
-getLocalStorageWeather();
+
 
 export async function weatherTranslate() { 
     let urlW;
@@ -25,20 +24,23 @@ export async function weatherTranslate() {
         wind.textContent = `Хуткасць паветра: ${Math.ceil(dataWW.wind.speed)} m/s`;
         humidity.textContent = `Вільготнасць: ${dataWW.main.humidity} %`;
       } catch (error) {
-        city.value = "Мiнск";
+        city.value = "Мінск";
         alert("Няверны горад");
-        getWeather();
+        weatherTranslate();
       }
+
+      city.addEventListener("keydown", setCityTr);
+getLocalStorageWeatherTr();
   }
-  function getLocalStorageWeather() {
+  function getLocalStorageWeatherTr() {
     if (localStorage.getItem("city")) {
       city.value = localStorage.getItem("city");
     } else {
-      city.value = "Мiнск";
+      city.value = "Мінск";
     }
   }
   
-  function setCity(event) {
+  function setCityTr(event) {
     if (event.code === "Enter") {
         weatherTranslate();
       localStorage.setItem("city", city.value);

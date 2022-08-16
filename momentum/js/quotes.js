@@ -13,4 +13,4 @@ export default async function getQuotes() {
   }
   getQuotes();
   
-  changeQuote.addEventListener('click', getQuotes);
+  

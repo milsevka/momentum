@@ -1,7 +1,7 @@
 const langChec = document.querySelector(".checkLangBtn");
 const quotez = document.querySelector('.quote');
 const authorz = document.querySelector('.author');
-const namePlace = document.querySelector('.name.placeholder');
+const changeQuote = document.querySelector('.change-quote');
 import {getRandomNum} from './slider.js';
 import getQuotes from './quotes.js';
 import {weatherTranslate} from './translateWeather.js';
@@ -58,7 +58,12 @@ langChec.addEventListener('change', checkTranslate);
         let randomNumQuote = getRandomNum(0, Object.keys(dataB.quotes).length-1); 
         authorz.textContent = dataB.quotes[randomNumQuote].author;
         quotez.textContent = dataB.quotes[randomNumQuote].text;
-        // changeQuote.addEventListener('click', quoteTranslate);
   }
   
-  
+  changeQuote.addEventListener("click", () => {
+   if (!langChec.checked) {
+      quoteTranslate();
+   } else {
+      getQuotes();
+   }
+ });

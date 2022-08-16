@@ -6,8 +6,8 @@ const weatherDescription = document.querySelector(".weather-description");
 const city = document.querySelector(".city");
 
 city.addEventListener("keydown", setCity);
-
-getLocalStorageWeather();
+getWeather();
+getLocalStorageWeather()
 
 export default async function getWeather() {
 
@@ -29,7 +29,7 @@ export default async function getWeather() {
     humidity.textContent = `Humidity: ${dataW.main.humidity} %`;
   } catch (error) {
     city.value = "Minsk";
-    alert("Неверный город");
+    alert("Wrong city");
     getWeather();
   }
 }
@@ -49,4 +49,3 @@ function setCity(event) {
   }
 }
 
-getWeather();
