@@ -8,7 +8,7 @@ export  function setBg(){
 const timeOfDay = getTimeOfDay('./greeting.js');
 let bgNum = randomNum.toString().padStart(2, "0");
 const img = new Image();
-img.src = `https://raw.githubusercontent.com/milsevka/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
+img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
 img.onload = () => {
   document.body.style.backgroundImage = `url(${img.src})`
 }
